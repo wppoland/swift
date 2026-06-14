@@ -3,7 +3,7 @@
  * Plugin Name:       Swift – Quick Buy for WooCommerce
  * Plugin URI:        https://plogins.com/swift/
  * Description:        Add a Buy Now button that takes shoppers straight to checkout, skipping the cart.
- * Version:           0.1.0
+ * Version:           0.2.0
  * Requires at least: 6.5
  * Requires PHP:      8.1
  * Requires Plugins:  woocommerce
@@ -24,7 +24,7 @@ namespace Swift;
 
 defined('ABSPATH') || exit;
 
-const VERSION     = '0.1.0';
+const VERSION     = '0.2.0';
 const PLUGIN_FILE = __FILE__;
 
 define('SWIFT_DIR', plugin_dir_path(__FILE__));
@@ -50,6 +50,7 @@ add_action('plugins_loaded', static function (): void {
         return;
     }
 
-    Plugin::instance()->boot();
-    do_action('swift/booted', Plugin::instance());
-});
+    add_action('init', static function (): void {
+        Plugin::instance()->boot();
+    }, 0);
+}, 10);
