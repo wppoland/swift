@@ -5,10 +5,7 @@
  * The feature ships enabled. The merchant tunes the button label, where it
  * appears (single product and/or shop loop), where it sits relative to the
  * native add-to-cart button, where it redirects (checkout or cart), its visual
- * style and whether the on-page quantity is carried into the purchase. All
- * product/cart logic lives in the storefront-kit DirectCheckoutEngine; these
- * values are passed through to it as the resolved settings and read by the
- * bundled button template.
+ * style and whether the on-page quantity is carried into the purchase.
  *
  * @package Swift
  *

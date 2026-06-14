@@ -17,7 +17,7 @@ Swift adds a "Buy Now" button to your WooCommerce products. One click adds the p
 
 The button can appear on single product pages, on shop and archive loops, or both. You choose the label, where it redirects (checkout or cart), and whether the cart is emptied first so the buyer checks out with only the product they clicked.
 
-Swift is **stateless** — it stores no per-product data and creates no database tables. It is a thin adapter over the shared, namespace-neutral `wppoland/storefront-kit` direct-checkout engine, which handles the button hooks, nonce verification, cart handling and redirect.
+Swift is **stateless** — it stores no per-product data and creates no database tables. It handles the button hooks, nonce verification, cart handling and redirect, and nothing more.
 
 = What it does =
 
@@ -49,10 +49,6 @@ A simple WooCommerce settings page (WooCommerce → Swift Quick Buy) lets you:
 Use `[swift_buy_now]` to render the Buy Now button anywhere — inside a page, post or block. It targets the current product by default; add an id to target a specific simple product:
 
 `[swift_buy_now id="123"]`
-
-= Engine =
-
-The direct-checkout orchestration (button markup hooks, nonce, cart handling, redirect) is provided by the shared, namespace-neutral `wppoland/storefront-kit` DirectCheckout engine; this plugin is a thin adapter that supplies the text domain, options and button markup.
 
 == Installation ==
 
