@@ -157,7 +157,10 @@ final class SwiftService implements HasHooks
 
         $accent = (string) ($settings['accent_color'] ?? '');
         if ($accent !== '') {
-            $css = ':root{--swift-buy-now-accent:' . $accent . ';}';
+            // Scope the accent token to the button wrapper so it only themes
+            // Swift's own buttons (never leaks onto the rest of the page), and
+            // derive a readable contrast colour for the solid variant.
+            $css = '.swift-buy-now{--swift-accent:' . $accent . ';}';
             wp_add_inline_style(self::HANDLE, $css);
         }
 
