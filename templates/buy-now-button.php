@@ -48,11 +48,15 @@ if (! in_array($swift_style, ['theme', 'solid', 'outline'], true)) {
     $swift_style = 'theme';
 }
 
-$swift_respect_qty = ! empty($settings['respect_quantity']) && (string) $context === 'single';
+// Normalise the injected context once: a non-scalar (e.g. array) would emit an
+// "Array to string conversion" warning when cast below.
+$swift_context = is_scalar($context) ? (string) $context : '';
+
+$swift_respect_qty = ! empty($settings['respect_quantity']) && $swift_context === 'single';
 
 $swift_button_classes = 'button swift-buy-now-button swift-buy-now-button--' . $swift_style;
 ?>
-<form class="swift-buy-now swift-buy-now--<?php echo esc_attr((string) $context); ?>" method="get" action="<?php echo esc_url($swift_action_url); ?>"<?php echo $swift_respect_qty ? ' data-swift-respect-qty' : ''; ?>>
+<form class="swift-buy-now swift-buy-now--<?php echo esc_attr($swift_context); ?>" method="get" action="<?php echo esc_url($swift_action_url); ?>"<?php echo $swift_respect_qty ? ' data-swift-respect-qty' : ''; ?>>
     <input type="hidden" name="<?php echo esc_attr((string) $request_key); ?>" value="<?php echo esc_attr((string) $swift_product_id); ?>" />
     <input type="hidden" name="_wpnonce" value="<?php echo esc_attr((string) ($button['nonce_field'] ?? '')); ?>" />
     <input type="hidden" name="quantity" value="1" data-swift-quantity />
