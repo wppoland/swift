@@ -1,0 +1,24 @@
+/**
+ * Swift — Buy Now button styles.
+ *
+ * Minimal, self-contained spacing so the Buy Now form sits cleanly next to the
+ * native add-to-cart button (single product) and within the loop item. The
+ * button itself inherits the theme's `.button` styling.
+ */
+
+.swift-buy-now {
+    margin: 0.5em 0 0;
+}
+
+.swift-buy-now--single {
+    display: inline-block;
+    margin-left: 0.5em;
+}
+
+.swift-buy-now-button {
+    width: 100%;
+}
+
+.swift-buy-now--single .swift-buy-now-button {
+    width: auto;
+}
