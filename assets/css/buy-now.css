@@ -1,41 +1,117 @@
 /**
- * Swift — Buy Now button styles.
+ * Swift — Buy Now button styles (storefront).
  *
- * Minimal, self-contained spacing so the Buy Now form sits cleanly next to the
- * native add-to-cart button (single product) and within the loop item. By
- * default the button inherits the theme's `.button` styling; the optional
- * `solid` / `outline` styles use the `--swift-buy-now-accent` custom property
- * (set inline from the admin "Accent colour" option) and fall back to a neutral
- * colour when none is configured.
+ * Self-contained, CWV-native styling so the Buy Now form sits cleanly next to
+ * the native add-to-cart button (single product) and within the loop item.
+ *
+ * Design goals:
+ *  - Themeable via CSS custom properties (colours / spacing / radii / motion).
+ *  - No layout shift (CLS): the button reserves its height up front, so there is
+ *    no reflow once styles apply, and no FOUC.
+ *  - By default the button inherits the theme's `.button` styling; the optional
+ *    `solid` / `outline` styles use the `--swift-accent` custom property (set
+ *    inline from the admin "Accent colour" option) and degrade to a sensible
+ *    neutral colour when none is configured.
+ *  - Tasteful press / hover feedback, always behind a reduced-motion guard.
+ *  - Dark-mode aware (prefers-color-scheme) for the self-styled variants.
  */
 
 .swift-buy-now {
-    margin: 0.5em 0 0;
+	/* Themeable tokens — override via the admin accent option or a child theme. */
+	--swift-accent: #2271b1;
+	--swift-accent-contrast: #fff;
+	--swift-radius: 4px;
+	--swift-gap: 0.5em;
+	--swift-transition: 140ms ease;
+
+	margin-block: var(--swift-gap) 0;
+	margin-inline: 0;
 }
 
 .swift-buy-now--single {
-    display: inline-block;
-    margin-left: 0.5em;
+	display: inline-block;
+	margin-inline-start: var(--swift-gap);
+	margin-block-start: 0;
+	vertical-align: top;
 }
 
 .swift-buy-now-button {
-    width: 100%;
+	/* Reserve space so the button never jumps once the theme's button styles
+	   load — keeps Cumulative Layout Shift at zero. */
+	inline-size: 100%;
+	min-block-size: 2.75em;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.4em;
+	border-radius: var(--swift-radius);
+	cursor: pointer;
+	text-align: center;
 }
 
-.swift-buy-now--single .swift-buy-now-button {
-    width: auto;
+.swift-buy-now--single .swift-buy-now-button,
+.swift-buy-now--shortcode .swift-buy-now-button {
+	inline-size: auto;
 }
 
 /* Solid: filled with the accent colour. */
 .swift-buy-now-button--solid {
-    background-color: var(--swift-buy-now-accent, #2271b1);
-    border-color: var(--swift-buy-now-accent, #2271b1);
-    color: #fff;
+	background-color: var(--swift-accent);
+	border: 1px solid var(--swift-accent);
+	color: var(--swift-accent-contrast);
 }
 
 /* Outline: accent border and text on a transparent background. */
 .swift-buy-now-button--outline {
-    background-color: transparent;
-    border: 1px solid var(--swift-buy-now-accent, #2271b1);
-    color: var(--swift-buy-now-accent, #2271b1);
+	background-color: transparent;
+	border: 1px solid var(--swift-accent);
+	color: var(--swift-accent);
+}
+
+/* Tasteful interaction feedback — only the self-styled variants, so we never
+   fight the theme's own button states on the `theme` style. */
+@media (prefers-reduced-motion: no-preference) {
+	.swift-buy-now-button--solid,
+	.swift-buy-now-button--outline {
+		transition:
+			transform var(--swift-transition),
+			box-shadow var(--swift-transition),
+			background-color var(--swift-transition),
+			color var(--swift-transition);
+	}
+
+	.swift-buy-now-button--solid:hover,
+	.swift-buy-now-button--outline:hover {
+		transform: translateY(-1px);
+		box-shadow: 0 4px 12px -4px color-mix(in srgb, var(--swift-accent) 55%, transparent);
+	}
+
+	.swift-buy-now-button--solid:active,
+	.swift-buy-now-button--outline:active {
+		transform: translateY(0);
+		box-shadow: none;
+	}
+}
+
+.swift-buy-now-button--outline:hover {
+	background-color: color-mix(in srgb, var(--swift-accent) 10%, transparent);
+}
+
+/* Always-visible, accessible focus ring for keyboard users. */
+.swift-buy-now-button:focus-visible {
+	outline: 2px solid var(--swift-accent);
+	outline-offset: 2px;
+}
+
+/* Dark mode: lift the accent slightly and keep the outline readable. Only the
+   self-styled variants are touched; the `theme` style follows the theme. */
+@media (prefers-color-scheme: dark) {
+	.swift-buy-now {
+		--swift-accent-contrast: #0b0f14;
+	}
+
+	.swift-buy-now-button--outline {
+		color: var(--swift-accent);
+		border-color: color-mix(in srgb, var(--swift-accent) 70%, #fff 30%);
+	}
 }

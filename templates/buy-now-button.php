@@ -29,6 +29,16 @@ declare(strict_types=1);
 
 defined('ABSPATH') || exit;
 
+// Robustness: never emit a broken/empty form. If the engine could not supply a
+// valid product id or action URL (e.g. the product became unpurchasable between
+// query and render), render nothing rather than a dead button.
+$swift_product_id = isset($button['product_id']) ? (int) $button['product_id'] : 0;
+$swift_action_url = isset($button['action_url']) ? (string) $button['action_url'] : '';
+
+if ($swift_product_id <= 0 || $swift_action_url === '') {
+    return;
+}
+
 $swift_label = isset($button['label']) && (string) $button['label'] !== ''
     ? (string) $button['label']
     : __('Buy now', 'swift');
@@ -42,8 +52,8 @@ $swift_respect_qty = ! empty($settings['respect_quantity']) && (string) $context
 
 $swift_button_classes = 'button swift-buy-now-button swift-buy-now-button--' . $swift_style;
 ?>
-<form class="swift-buy-now swift-buy-now--<?php echo esc_attr((string) $context); ?>" method="get" action="<?php echo esc_url((string) ($button['action_url'] ?? '')); ?>"<?php echo $swift_respect_qty ? ' data-swift-respect-qty' : ''; ?>>
-    <input type="hidden" name="<?php echo esc_attr((string) $request_key); ?>" value="<?php echo esc_attr((string) ($button['product_id'] ?? 0)); ?>" />
+<form class="swift-buy-now swift-buy-now--<?php echo esc_attr((string) $context); ?>" method="get" action="<?php echo esc_url($swift_action_url); ?>"<?php echo $swift_respect_qty ? ' data-swift-respect-qty' : ''; ?>>
+    <input type="hidden" name="<?php echo esc_attr((string) $request_key); ?>" value="<?php echo esc_attr((string) $swift_product_id); ?>" />
     <input type="hidden" name="_wpnonce" value="<?php echo esc_attr((string) ($button['nonce_field'] ?? '')); ?>" />
     <input type="hidden" name="quantity" value="1" data-swift-quantity />
     <button type="submit" class="<?php echo esc_attr($swift_button_classes); ?>">

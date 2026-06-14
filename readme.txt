@@ -96,6 +96,10 @@ The free version is designed for simple products. On shop loops the button is sh
 * New: button style options — theme default, solid, or outline — with an optional accent colour.
 * New: "Settings" link in the plugins list row.
 * New: uninstall cleanup removes the plugin's options (multisite-aware).
+* Improved: redesigned settings page with grouped cards, a live button preview, a Live/Off status indicator, and accessible "?" help tooltips on every option.
+* Improved: modern, themeable storefront button styles (CSS custom properties, dark-mode support, reduced-motion-safe transitions) with no layout shift.
+* Improved: accessibility — keyboard-operable help tooltips, visible focus styles, and ARIA roles throughout the admin.
+* Improved: robustness — the button never renders in a broken state for unpurchasable products, and the accent colour is scoped to Swift's own buttons.
 
 = 0.1.0 =
 * Initial release: a Buy Now button for WooCommerce that adds to cart and redirects straight to checkout (or cart), with a settings page for the label, placement and redirect target.
