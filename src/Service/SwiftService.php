@@ -10,22 +10,20 @@ use WPPoland\StorefrontKit\Checkout\DirectCheckoutEngine;
 defined('ABSPATH') || exit;
 
 /**
- * Thin adapter over the storefront-kit {@see DirectCheckoutEngine}.
+ * Wires up the Buy Now feature for this plugin.
  *
- * Injects this plugin's text-domain ('swift'), option prefix ('swift_'),
- * request key, nonce action and labels into the namespace-neutral engine, and
- * supplies the closures it needs: one to report whether the feature is enabled,
- * one to resolve the merchant settings, and one to render the packaged button
- * template. All direct-checkout orchestration (button hooks, nonce, cart
- * handling, redirect) lives in the kit; this class only supplies localisation,
- * option storage and the button markup. The engine is stateless — no DB.
+ * Supplies the text-domain ('swift'), option prefix ('swift_'), request key,
+ * nonce action and labels, plus the closures needed to report whether the
+ * feature is enabled, resolve the merchant settings, and render the button
+ * template. The button hooks, nonce, cart handling and redirect are handled by
+ * {@see DirectCheckoutEngine}; this class supplies localisation, option storage
+ * and the button markup. Stateless — no DB.
  *
- * On top of the engine this adapter adds FREE-only presentation controls that
- * stay plugin-local (no kit changes): single-product placement (before/after
- * the add-to-cart button), a `[swift_buy_now]` shortcode, button style/accent
- * options and an opt-in "respect the on-page quantity" behaviour driven by a
- * tiny vanilla script. None of this touches variable products, sticky bars or
- * per-product rules, which remain the Swift Pro upsell.
+ * On top of that it adds presentation controls: single-product placement
+ * (before/after the add-to-cart button), a `[swift_buy_now]` shortcode, button
+ * style/accent options and an opt-in "respect the on-page quantity" behaviour
+ * driven by a tiny vanilla script. None of this touches variable products,
+ * sticky bars or per-product rules.
  */
 final class SwiftService implements HasHooks
 {
@@ -37,9 +35,8 @@ final class SwiftService implements HasHooks
 
     public function __construct()
     {
-        // The engine ships with storefront-kit >= 1.5.0. When present, wire it
-        // with this plugin's text-domain / option prefix / request key.
-        // Otherwise leave the service inert (see registerHooks()).
+        // Wire the direct-checkout engine when available; otherwise leave the
+        // service inert (see registerHooks()).
         if (! class_exists(DirectCheckoutEngine::class)) {
             return;
         }
@@ -63,19 +60,17 @@ final class SwiftService implements HasHooks
     public function registerHooks(): void
     {
         if (! $this->engine instanceof DirectCheckoutEngine) {
-            // storefront-kit < 1.5.0 has no DirectCheckoutEngine. Bump the
-            // `wppoland/storefront-kit` constraint (composer update) to enable
-            // the Buy Now button. No hooks are registered until present.
+            // No DirectCheckoutEngine available: no hooks are registered until
+            // it is present.
             return;
         }
 
         $this->engine->registerHooks();
 
-        // Honour the single-product placement option. The engine wires its
-        // single button to `woocommerce_after_add_to_cart_button` at priority
-        // 15; when the merchant prefers it above the add-to-cart button we move
-        // that exact callable to the matching `before` hook. Uses only the
-        // engine's public API — the kit is not modified.
+        // Honour the single-product placement option. The single button is
+        // wired to `woocommerce_after_add_to_cart_button` at priority 15; when
+        // the merchant prefers it above the add-to-cart button we move that
+        // exact callable to the matching `before` hook.
         if ($this->settings()['single_position'] === 'before') {
             remove_action('woocommerce_after_add_to_cart_button', [$this->engine, 'renderSingleButton'], 15);
             add_action('woocommerce_before_add_to_cart_button', [$this->engine, 'renderSingleButton'], 15);
@@ -90,8 +85,7 @@ final class SwiftService implements HasHooks
      * `[swift_buy_now]` shortcode, e.g. `[swift_buy_now id="42"]`.
      *
      * Defers all markup to the engine so the shortcode button is identical to
-     * the hooked one. Variable products are deferred to Swift Pro and render
-     * nothing here.
+     * the hooked one. Variable products render nothing here.
      *
      * @param array<string, mixed>|string $atts
      */

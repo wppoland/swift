@@ -2,8 +2,7 @@
 /**
  * Buy Now button.
  *
- * Rendered by the storefront-kit DirectCheckoutEngine on
- * `woocommerce_after_add_to_cart_button` (single product) and
+ * Rendered on `woocommerce_after_add_to_cart_button` (single product) and
  * `woocommerce_after_shop_loop_item` (shop loop), and by the
  * `[swift_buy_now]` shortcode.
  *
