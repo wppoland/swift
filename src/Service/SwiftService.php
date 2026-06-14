@@ -19,10 +19,19 @@ defined('ABSPATH') || exit;
  * template. All direct-checkout orchestration (button hooks, nonce, cart
  * handling, redirect) lives in the kit; this class only supplies localisation,
  * option storage and the button markup. The engine is stateless — no DB.
+ *
+ * On top of the engine this adapter adds FREE-only presentation controls that
+ * stay plugin-local (no kit changes): single-product placement (before/after
+ * the add-to-cart button), a `[swift_buy_now]` shortcode, button style/accent
+ * options and an opt-in "respect the on-page quantity" behaviour driven by a
+ * tiny vanilla script. None of this touches variable products, sticky bars or
+ * per-product rules, which remain the Swift Pro upsell.
  */
 final class SwiftService implements HasHooks
 {
     private const OPTION = 'swift_settings';
+
+    private const HANDLE = 'swift';
 
     private ?DirectCheckoutEngine $engine = null;
 
@@ -61,12 +70,75 @@ final class SwiftService implements HasHooks
         }
 
         $this->engine->registerHooks();
+
+        // Honour the single-product placement option. The engine wires its
+        // single button to `woocommerce_after_add_to_cart_button` at priority
+        // 15; when the merchant prefers it above the add-to-cart button we move
+        // that exact callable to the matching `before` hook. Uses only the
+        // engine's public API — the kit is not modified.
+        if ($this->settings()['single_position'] === 'before') {
+            remove_action('woocommerce_after_add_to_cart_button', [$this->engine, 'renderSingleButton'], 15);
+            add_action('woocommerce_before_add_to_cart_button', [$this->engine, 'renderSingleButton'], 15);
+        }
+
+        add_shortcode('swift_buy_now', [$this, 'shortcode']);
         add_action('wp_enqueue_scripts', [$this, 'enqueueAssets']);
     }
 
     /**
+     * Render the Buy Now button for the current (or a given) product via the
+     * `[swift_buy_now]` shortcode, e.g. `[swift_buy_now id="42"]`.
+     *
+     * Defers all markup to the engine so the shortcode button is identical to
+     * the hooked one. Variable products are deferred to Swift Pro and render
+     * nothing here.
+     *
+     * @param array<string, mixed>|string $atts
+     */
+    public function shortcode(array|string $atts): string
+    {
+        if (! $this->engine instanceof DirectCheckoutEngine || ! $this->isEnabled()) {
+            return '';
+        }
+
+        $atts = shortcode_atts(['id' => 0], is_array($atts) ? $atts : [], 'swift_buy_now');
+
+        $productId = absint($atts['id']);
+
+        if ($productId === 0) {
+            $current = get_the_ID();
+            $productId = $current !== false ? (int) $current : 0;
+        }
+
+        $product = $productId > 0 ? wc_get_product($productId) : null;
+
+        if (! $product instanceof \WC_Product || ! $product->is_purchasable() || ! $product->is_in_stock()) {
+            return '';
+        }
+
+        // Variable products require a chosen variation (a Swift Pro feature).
+        if ($product->is_type('variable')) {
+            return '';
+        }
+
+        ob_start();
+        $this->renderTemplate('buy-now-button', [
+            'product'     => $product,
+            'context'     => 'shortcode',
+            'settings'    => $this->settings(),
+            'button'      => $this->engine->getButtonData($product),
+            'request_key' => 'swift_buy_now',
+        ]);
+
+        return (string) ob_get_clean();
+    }
+
+    /**
      * Enqueue the (tiny) button stylesheet on the front end when the feature is
-     * enabled and we are on a page that can show the button.
+     * enabled and we are on a page that can show the button. When the merchant
+     * has opted to respect the on-page quantity, also enqueue a small vanilla
+     * script that mirrors the quantity input into the Buy Now form on single
+     * product pages, and pass the chosen accent colour as a CSS variable.
      */
     public function enqueueAssets(): void
     {
@@ -75,11 +147,32 @@ final class SwiftService implements HasHooks
         }
 
         wp_enqueue_style(
-            'swift',
+            self::HANDLE,
             \Swift\Plugin::instance()->url('assets/css/buy-now.css'),
             [],
             \Swift\VERSION,
         );
+
+        $settings = $this->settings();
+
+        $accent = (string) ($settings['accent_color'] ?? '');
+        if ($accent !== '') {
+            // Scope the accent token to the button wrapper so it only themes
+            // Swift's own buttons (never leaks onto the rest of the page), and
+            // derive a readable contrast colour for the solid variant.
+            $css = '.swift-buy-now{--swift-accent:' . $accent . ';}';
+            wp_add_inline_style(self::HANDLE, $css);
+        }
+
+        if (! empty($settings['respect_quantity'])) {
+            wp_enqueue_script(
+                self::HANDLE,
+                \Swift\Plugin::instance()->url('assets/js/buy-now.js'),
+                [],
+                \Swift\VERSION,
+                true,
+            );
+        }
     }
 
     private function isEnabled(): bool
