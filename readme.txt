@@ -4,7 +4,7 @@ Tags: woocommerce, buy now, direct checkout, skip cart, one click
 Requires at least: 6.5
 Tested up to: 7.0
 Requires PHP: 8.1
-Stable tag: 0.1.0
+Stable tag: 0.2.0
 Requires Plugins: woocommerce
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -23,8 +23,12 @@ Swift is **stateless** — it stores no per-product data and creates no database
 
 * Adds a "Buy Now" button that adds-to-cart and redirects in one click.
 * Works on single product pages and/or shop and archive loops.
+* Place the button **before or after** the native add-to-cart button on single product pages.
+* Drop the button anywhere with the `[swift_buy_now]` shortcode (optionally targeting a product by id).
 * Redirects to the **checkout** (skip the cart) or to the **cart** — your choice.
 * Optionally empties the cart first so checkout shows only the chosen product.
+* Optionally **respects the quantity** chosen on the product page (simple products).
+* Pick a button **style** — theme default, solid, or outline — with an optional accent colour.
 * Honours stock and purchasability — the button is hidden for out-of-stock or non-purchasable products, and is not shown for variable products in loops.
 
 = Settings =
@@ -34,8 +38,17 @@ A simple WooCommerce settings page (WooCommerce → Swift Quick Buy) lets you:
 * Enable or disable the Buy Now button.
 * Set the button label.
 * Choose where the button appears (single product, shop loops, or both).
+* Choose whether it sits before or after the add-to-cart button on single products.
 * Choose where it redirects (checkout or cart).
 * Choose whether to empty the cart before adding.
+* Choose whether to respect the quantity selected on the product page.
+* Pick a button style (theme, solid, outline) and an optional accent colour.
+
+= Shortcode =
+
+Use `[swift_buy_now]` to render the Buy Now button anywhere — inside a page, post or block. It targets the current product by default; add an id to target a specific simple product:
+
+`[swift_buy_now id="123"]`
 
 = Engine =
 
@@ -75,6 +88,14 @@ The free version is designed for simple products. On shop loops the button is sh
 2. The Swift Quick Buy settings screen.
 
 == Changelog ==
+
+= 0.2.0 =
+* New: `[swift_buy_now]` shortcode to place the Buy Now button anywhere (optionally targeting a product by id).
+* New: choose whether the button sits before or after the add-to-cart button on single product pages.
+* New: optionally respect the quantity chosen on the product page (simple products).
+* New: button style options — theme default, solid, or outline — with an optional accent colour.
+* New: "Settings" link in the plugins list row.
+* New: uninstall cleanup removes the plugin's options (multisite-aware).
 
 = 0.1.0 =
 * Initial release: a Buy Now button for WooCommerce that adds to cart and redirects straight to checkout (or cart), with a settings page for the label, placement and redirect target.

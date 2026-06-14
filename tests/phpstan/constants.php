@@ -17,11 +17,14 @@ namespace {
     if (! defined('SWIFT_URL')) {
         define('SWIFT_URL', 'https://example.test/wp-content/plugins/swift/');
     }
+    if (! defined('WP_UNINSTALL_PLUGIN')) {
+        define('WP_UNINSTALL_PLUGIN', 'swift/swift.php');
+    }
 }
 
 namespace Swift {
     if (! defined('Swift\\VERSION')) {
-        define('Swift\\VERSION', '0.1.0');
+        define('Swift\\VERSION', '0.2.0');
     }
     if (! defined('Swift\\PLUGIN_FILE')) {
         define('Swift\\PLUGIN_FILE', '/tmp/swift/swift.php');

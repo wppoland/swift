@@ -2,8 +2,11 @@
  * Swift — Buy Now button styles.
  *
  * Minimal, self-contained spacing so the Buy Now form sits cleanly next to the
- * native add-to-cart button (single product) and within the loop item. The
- * button itself inherits the theme's `.button` styling.
+ * native add-to-cart button (single product) and within the loop item. By
+ * default the button inherits the theme's `.button` styling; the optional
+ * `solid` / `outline` styles use the `--swift-buy-now-accent` custom property
+ * (set inline from the admin "Accent colour" option) and fall back to a neutral
+ * colour when none is configured.
  */
 
 .swift-buy-now {
@@ -21,4 +24,18 @@
 
 .swift-buy-now--single .swift-buy-now-button {
     width: auto;
+}
+
+/* Solid: filled with the accent colour. */
+.swift-buy-now-button--solid {
+    background-color: var(--swift-buy-now-accent, #2271b1);
+    border-color: var(--swift-buy-now-accent, #2271b1);
+    color: #fff;
+}
+
+/* Outline: accent border and text on a transparent background. */
+.swift-buy-now-button--outline {
+    background-color: transparent;
+    border: 1px solid var(--swift-buy-now-accent, #2271b1);
+    color: var(--swift-buy-now-accent, #2271b1);
 }
