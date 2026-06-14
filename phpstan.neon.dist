@@ -5,6 +5,7 @@ parameters:
     level: 6
     paths:
         - swift.php
+        - uninstall.php
         - src
         - config
         - templates

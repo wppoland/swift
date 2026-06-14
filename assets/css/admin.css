@@ -1,0 +1,253 @@
+/**
+ * Swift — admin settings page styles.
+ *
+ * A light, modern layer on top of WordPress's core admin styles. We keep WP's
+ * form-table semantics (so the page feels native and stays accessible) but wrap
+ * each group in a card, add a friendly intro, and style the inline "?" help
+ * affordances and their popovers.
+ *
+ * Themeable via CSS custom properties; dark-mode aware; all motion is guarded
+ * behind prefers-reduced-motion.
+ */
+
+.swift-admin {
+	--swift-card-bg: #fff;
+	--swift-card-border: #dcdcde;
+	--swift-card-radius: 8px;
+	--swift-accent: #2271b1;
+	--swift-muted: #50575e;
+	--swift-help-bg: #1d2327;
+	--swift-help-fg: #fff;
+	--swift-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+	--swift-gap: clamp(1rem, 2vw, 1.5rem);
+
+	max-inline-size: 820px;
+}
+
+/* Friendly intro / lead paragraph. */
+.swift-admin__intro {
+	margin-block: 0.5rem 1.25rem;
+	color: var(--swift-muted);
+	font-size: 14px;
+	max-inline-size: 65ch;
+	line-height: 1.6;
+}
+
+/* Status pill that reflects whether the button is live. */
+.swift-status {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4em;
+	padding-block: 0.25em;
+	padding-inline: 0.7em;
+	border-radius: 999px;
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 1.4;
+	margin-inline-start: 0.5em;
+	vertical-align: middle;
+}
+
+.swift-status--on {
+	background: #edfaef;
+	color: #136c39;
+}
+
+.swift-status--off {
+	background: #fcf0f1;
+	color: #8a2424;
+}
+
+.swift-status__dot {
+	inline-size: 0.5em;
+	block-size: 0.5em;
+	border-radius: 50%;
+	background: currentColor;
+}
+
+/* Cards group related settings. */
+.swift-card {
+	background: var(--swift-card-bg);
+	border: 1px solid var(--swift-card-border);
+	border-radius: var(--swift-card-radius);
+	box-shadow: var(--swift-shadow);
+	padding-block: 0.5rem clamp(0.75rem, 2vw, 1.25rem);
+	padding-inline: clamp(1rem, 2vw, 1.5rem);
+	margin-block-end: var(--swift-gap);
+}
+
+.swift-card > h2 {
+	display: flex;
+	align-items: center;
+	gap: 0.5em;
+	margin-block: 0.75rem 0.25rem;
+	font-size: 15px;
+}
+
+.swift-card__hint {
+	margin-block: 0 0.75rem;
+	color: var(--swift-muted);
+	font-size: 13px;
+	max-inline-size: 60ch;
+}
+
+/* Keep WP form-table tidy inside cards. */
+.swift-card .form-table {
+	margin-block-start: 0;
+}
+
+.swift-card .form-table th {
+	font-weight: 600;
+}
+
+/* The "?" help affordance — a small, keyboard-focusable button. */
+.swift-help {
+	all: unset;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	inline-size: 1.25em;
+	block-size: 1.25em;
+	margin-inline-start: 0.35em;
+	border-radius: 50%;
+	background: #f0f0f1;
+	color: var(--swift-muted);
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 1;
+	cursor: help;
+	vertical-align: middle;
+	border: 1px solid var(--swift-card-border);
+}
+
+.swift-help:hover,
+.swift-help:focus-visible {
+	background: var(--swift-accent);
+	color: #fff;
+	border-color: var(--swift-accent);
+}
+
+.swift-help:focus-visible {
+	outline: 2px solid var(--swift-accent);
+	outline-offset: 2px;
+}
+
+/* Popover (native Popover API) used as the tooltip surface.
+   Hidden by default to avoid any flash before the script runs; the script either
+   promotes it to a popover (kept hidden until shown) or marks it inline. */
+.swift-tip {
+	display: none;
+	max-inline-size: 280px;
+	margin: 0;
+	padding-block: 0.6em;
+	padding-inline: 0.8em;
+	border: none;
+	border-radius: 6px;
+	background: var(--swift-help-bg);
+	color: var(--swift-help-fg);
+	font-size: 13px;
+	line-height: 1.5;
+	box-shadow: 0 6px 24px -6px rgba(0, 0, 0, 0.4);
+}
+
+/* When promoted to a popover, the open state must override our default hide. */
+.swift-tip:popover-open {
+	display: block;
+}
+
+/* Graceful fallback: where :popover-open is supported, fade in tastefully. */
+@media (prefers-reduced-motion: no-preference) {
+	.swift-tip:popover-open {
+		animation: swift-tip-in 120ms ease;
+	}
+
+	@keyframes swift-tip-in {
+		from {
+			opacity: 0;
+			transform: translateY(4px);
+		}
+	}
+}
+
+/* When the Popover API is unavailable, the tip is wired as an inline
+   aria-describedby block by the script; style that fallback too. */
+.swift-tip[data-swift-inline] {
+	position: static;
+	display: block;
+	max-inline-size: 60ch;
+	margin-block: 0.5em 0;
+}
+
+/* Live preview of the button so merchants see their choices instantly. */
+.swift-preview {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.75rem;
+	padding: 1rem;
+	border: 1px dashed var(--swift-card-border);
+	border-radius: var(--swift-card-radius);
+	background: #fbfbfc;
+}
+
+.swift-preview__label {
+	color: var(--swift-muted);
+	font-size: 13px;
+}
+
+.swift-preview__btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-block-size: 2.75em;
+	padding-block: 0.5em;
+	padding-inline: 1.2em;
+	border-radius: 4px;
+	border: 1px solid var(--swift-accent);
+	background: var(--swift-accent);
+	color: #fff;
+	font-weight: 600;
+	cursor: default;
+}
+
+.swift-preview__btn--outline {
+	background: transparent;
+	color: var(--swift-accent);
+}
+
+.swift-preview__btn--theme {
+	background: #2c3338;
+	border-color: #2c3338;
+	color: #fff;
+}
+
+code {
+	font-size: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+	.swift-admin {
+		--swift-card-bg: #1e1e1e;
+		--swift-card-border: #3c434a;
+		--swift-muted: #bbc0c4;
+		--swift-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+	}
+
+	.swift-help {
+		background: #2c3338;
+	}
+
+	.swift-preview {
+		background: #181818;
+	}
+
+	.swift-status--on {
+		background: #133a22;
+		color: #6fd99a;
+	}
+
+	.swift-status--off {
+		background: #3a1717;
+		color: #e89090;
+	}
+}
