@@ -13,11 +13,13 @@ Add a Buy Now button that takes shoppers straight to checkout, skipping the cart
 
 == Description ==
 
-Swift adds a "Buy Now" button to your WooCommerce products. One click adds the product to the cart and sends the shopper straight to checkout — skipping the cart page entirely, so there is less friction between "I want this" and "I paid".
+Swift adds a "Buy Now" button to your WooCommerce products. One click adds the product to the cart and sends the shopper straight to checkout, skipping the cart page so a purchase takes one click instead of three.
 
 The button can appear on single product pages, on shop and archive loops, or both. You choose the label, where it redirects (checkout or cart), and whether the cart is emptied first so the buyer checks out with only the product they clicked.
 
-Swift is **stateless** — it stores no per-product data and creates no database tables. It handles the button hooks, nonce verification, cart handling and redirect, and nothing more.
+Swift is stateless: it stores no per-product data and creates no database tables. It handles the button hooks, nonce verification, cart handling and redirect, and nothing else.
+
+Swift is developed in the open. Source code, bug reports and feature requests live at https://github.com/wppoland/swift.
 
 = What it does =
 
@@ -25,7 +27,7 @@ Swift is **stateless** — it stores no per-product data and creates no database
 * Works on single product pages and/or shop and archive loops.
 * Place the button **before or after** the native add-to-cart button on single product pages.
 * Drop the button anywhere with the `[swift_buy_now]` shortcode (optionally targeting a product by id).
-* Redirects to the **checkout** (skip the cart) or to the **cart** — your choice.
+* Redirects to the **checkout** (skip the cart) or to the **cart**, whichever you prefer.
 * Optionally empties the cart first so checkout shows only the chosen product.
 * Optionally **respects the quantity** chosen on the product page (simple products).
 * Pick a button **style** — theme default, solid, or outline — with an optional accent colour.
@@ -64,7 +66,7 @@ Yes. Swift requires an active WooCommerce installation.
 
 = Where does the Buy Now button appear? =
 
-On single product pages and/or shop and archive product loops — you choose in the settings. On loops it is shown for simple, in-stock, purchasable products.
+On single product pages and/or shop and archive product loops; you choose which in the settings. On loops it is shown only for simple, in-stock, purchasable products.
 
 = Does it skip the cart? =
 
