@@ -14,7 +14,12 @@
 	--swift-card-bg: #fff;
 	--swift-card-border: #dcdcde;
 	--swift-card-radius: 8px;
-	--swift-accent: #2271b1;
+	/* Velocity violet — Swift's storefront accent, carried into the admin so the
+	   live preview, help affordances and focus rings match the button merchants
+	   actually ship. Computed contrast on the wp-admin surface:
+	   #5b3df5 vs #fff = 6.12:1, vs #f0f0f1 = 5.37:1 (AA text 4.5:1 + UI 3:1);
+	   white text on #5b3df5 = 6.12:1 (AA). */
+	--swift-accent: #5b3df5;
 	--swift-muted: #50575e;
 	--swift-help-bg: #1d2327;
 	--swift-help-fg: #fff;
