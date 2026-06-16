@@ -4,25 +4,34 @@
  * Self-contained, CWV-native styling so the Buy Now form sits cleanly next to
  * the native add-to-cart button (single product) and within the loop item.
  *
+ * The moment: the press. Buy Now is the decisive instant-buy — one tap that
+ * launches the shopper straight past the cart to checkout. So the button does
+ * not merely "click": on press it *thrusts forward*, label and all, with a
+ * single light streak sweeping in the direction of travel — a launch cue, not a
+ * generic depress. The accent is "velocity violet", a charged forward hue that
+ * is deliberately not default-blue and reads as motion rather than chrome.
+ *
  * Design goals:
- *  - Themeable via CSS custom properties (colours / spacing / radii / motion).
- *  - No layout shift (CLS): the button reserves its height up front, so there is
- *    no reflow once styles apply, and no FOUC.
- *  - By default the button inherits the theme's `.button` styling; the optional
- *    `solid` / `outline` styles use the `--swift-accent` custom property (set
- *    inline from the admin "Accent colour" option) and degrade to a sensible
- *    neutral colour when none is configured.
- *  - Tasteful press / hover feedback, always behind a reduced-motion guard.
- *  - Dark-mode aware (prefers-color-scheme) for the self-styled variants.
+ *  - Themeable via `--swift-*` custom properties (colour / radius / spacing /
+ *    motion), each inheriting a sensible fallback so a child theme can retint
+ *    without touching this file.
+ *  - No layout shift (CLS): the button reserves its height up front and the
+ *    thrust streak is an overlay, so nothing reflows.
+ *  - The `theme` style inherits the theme's own `.button`; only the self-styled
+ *    `solid` / `outline` variants and the press launch use the accent.
+ *  - Always behind prefers-reduced-motion; dark-scheme aware; focus-visible.
  */
 
 .swift-buy-now {
-	/* Themeable tokens — override via the admin accent option or a child theme. */
-	--swift-accent: #2271b1;
-	--swift-accent-contrast: #fff;
-	--swift-radius: 4px;
-	--swift-gap: 0.5em;
-	--swift-transition: 140ms ease;
+	/* Velocity violet — Swift's forward-launch accent. Override via the admin
+	   "Accent colour" option or a child theme; falls back to the charged hue. */
+	--swift-accent: var(--swift-accent-color, #5b3df5);
+	--swift-accent-contrast: var(--swift-accent-contrast-color, #fff);
+	--swift-radius: var(--swift-button-radius, 6px);
+	--swift-gap: var(--swift-button-gap, 0.5em);
+	--swift-transition: var(--swift-button-transition, 150ms cubic-bezier(0.2, 0.8, 0.2, 1));
+	/* How far the label is launched forward on press. */
+	--swift-thrust: var(--swift-button-thrust, 3px);
 
 	margin-block: var(--swift-gap) 0;
 	margin-inline: 0;
@@ -38,6 +47,8 @@
 .swift-buy-now-button {
 	/* Reserve space so the button never jumps once the theme's button styles
 	   load — keeps Cumulative Layout Shift at zero. */
+	position: relative;
+	overflow: hidden;
 	inline-size: 100%;
 	min-block-size: 2.75em;
 	display: inline-flex;
@@ -54,6 +65,32 @@
 	inline-size: auto;
 }
 
+/* The label rides forward on press; isolate it so the transform is its own. */
+.swift-buy-now-button__label {
+	position: relative;
+	z-index: 1;
+	display: inline-block;
+	will-change: auto;
+}
+
+/* The thrust streak: a single light band, parked off the leading edge, that
+   sweeps across in the direction of travel on press — the launch toward
+   checkout. Presentation-only; gated entirely behind reduced-motion below. */
+.swift-buy-now-button__thrust {
+	position: absolute;
+	inset-block: 0;
+	inset-inline-start: -40%;
+	inline-size: 40%;
+	pointer-events: none;
+	opacity: 0;
+	background: linear-gradient(
+		100deg,
+		transparent,
+		color-mix(in srgb, var(--swift-accent-contrast) 70%, transparent),
+		transparent
+	);
+}
+
 /* Solid: filled with the accent colour. */
 .swift-buy-now-button--solid {
 	background-color: var(--swift-accent);
@@ -68,8 +105,18 @@
 	color: var(--swift-accent);
 }
 
-/* Tasteful interaction feedback — only the self-styled variants, so we never
-   fight the theme's own button states on the `theme` style. */
+/* For the outline variant the streak should read in the accent, not contrast. */
+.swift-buy-now-button--outline .swift-buy-now-button__thrust {
+	background: linear-gradient(
+		100deg,
+		transparent,
+		color-mix(in srgb, var(--swift-accent) 28%, transparent),
+		transparent
+	);
+}
+
+/* Interaction feedback — only the self-styled variants, so we never fight the
+   theme's own button states on the `theme` style. */
 @media (prefers-reduced-motion: no-preference) {
 	.swift-buy-now-button--solid,
 	.swift-buy-now-button--outline {
@@ -80,16 +127,49 @@
 			color var(--swift-transition);
 	}
 
+	.swift-buy-now-button--solid .swift-buy-now-button__label,
+	.swift-buy-now-button--outline .swift-buy-now-button__label {
+		transition: transform var(--swift-transition);
+	}
+
+	/* Hover stays quiet: a small lift, restraint before the decisive press. */
 	.swift-buy-now-button--solid:hover,
 	.swift-buy-now-button--outline:hover {
 		transform: translateY(-1px);
-		box-shadow: 0 4px 12px -4px color-mix(in srgb, var(--swift-accent) 55%, transparent);
+		box-shadow: 0 4px 14px -5px color-mix(in srgb, var(--swift-accent) 60%, transparent);
 	}
 
+	/* THE MOMENT — the press launches forward. The whole button leans into the
+	   direction of travel, the label thrusts ahead of it, and the streak sweeps
+	   across once: a one-tap launch toward checkout, not a generic depress. */
 	.swift-buy-now-button--solid:active,
 	.swift-buy-now-button--outline:active {
-		transform: translateY(0);
-		box-shadow: none;
+		transform: translateX(var(--swift-thrust));
+		box-shadow: 0 1px 4px -2px color-mix(in srgb, var(--swift-accent) 50%, transparent);
+	}
+
+	.swift-buy-now-button--solid:active .swift-buy-now-button__label,
+	.swift-buy-now-button--outline:active .swift-buy-now-button__label {
+		transform: translateX(calc(var(--swift-thrust) * 1.6));
+	}
+
+	.swift-buy-now-button--solid:active .swift-buy-now-button__thrust,
+	.swift-buy-now-button--outline:active .swift-buy-now-button__thrust {
+		animation: swift-thrust-sweep 360ms cubic-bezier(0.2, 0.7, 0.1, 1);
+	}
+
+	@keyframes swift-thrust-sweep {
+		0% {
+			opacity: 0;
+			transform: translateX(0);
+		}
+		35% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+			transform: translateX(360%);
+		}
 	}
 }
 
@@ -107,7 +187,7 @@
    self-styled variants are touched; the `theme` style follows the theme. */
 @media (prefers-color-scheme: dark) {
 	.swift-buy-now {
-		--swift-accent-contrast: #0b0f14;
+		--swift-accent-contrast: var(--swift-accent-contrast-color, #0b0f14);
 	}
 
 	.swift-buy-now-button--outline {

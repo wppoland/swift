@@ -60,7 +60,8 @@ $swift_button_classes = 'button swift-buy-now-button swift-buy-now-button--' . $
     <input type="hidden" name="_wpnonce" value="<?php echo esc_attr((string) ($button['nonce_field'] ?? '')); ?>" />
     <input type="hidden" name="quantity" value="1" data-swift-quantity />
     <button type="submit" class="<?php echo esc_attr($swift_button_classes); ?>">
-        <?php echo esc_html($swift_label); ?>
+        <span class="swift-buy-now-button__label"><?php echo esc_html($swift_label); ?></span>
+        <span class="swift-buy-now-button__thrust" aria-hidden="true"></span>
     </button>
 </form>
 <?php
