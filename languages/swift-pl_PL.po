@@ -4,17 +4,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: swift 0.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/swift\n"
+"POT-Creation-Date: 2026-06-16T20:25:23+00:00\n"
+"PO-Revision-Date: 2026-06-15 10:00+0000\n"
 "Last-Translator: WPPoland <hello@plogins.com>\n"
 "Language-Team: Polish <pl_PL@li.org>\n"
 "Language: pl_PL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-14T20:17:01+00:00\n"
-"PO-Revision-Date: 2026-06-15 10:00+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: swift\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 "
+"|| n%100>14) ? 1 : 2);\n"
 
 #. Plugin Name of the plugin
 #: swift.php
@@ -28,8 +29,12 @@ msgstr "https://plogins.com/swift/"
 
 #. Description of the plugin
 #: swift.php
-msgid "Add a Buy Now button that takes shoppers straight to checkout, skipping the cart."
-msgstr "Dodaj przycisk Kup teraz, który przenosi klientów prosto do zamówienia, z pominięciem koszyka."
+msgid ""
+"Add a Buy Now button that takes shoppers straight to checkout, skipping the "
+"cart."
+msgstr ""
+"Dodaj przycisk Kup teraz, który przenosi klientów prosto do zamówienia, z "
+"pominięciem koszyka."
 
 #. Author of the plugin
 #: swift.php
@@ -53,10 +58,8 @@ msgstr "Swift – szybki zakup"
 msgid "Swift Quick Buy"
 msgstr "Swift szybki zakup"
 
-#: src/Admin/Settings.php:123
-#: src/Admin/Settings.php:462
-#: src/Service/SwiftService.php:52
-#: templates/buy-now-button.php:44
+#: src/Admin/Settings.php:123 src/Admin/Settings.php:462
+#: src/Service/SwiftService.php:49 templates/buy-now-button.php:43
 msgid "Buy now"
 msgstr "Kup teraz"
 
@@ -69,8 +72,16 @@ msgid "Off"
 msgstr "Wyłączony"
 
 #: src/Admin/Settings.php:143
-msgid "Swift adds a \"Buy now\" button so shoppers can go straight to checkout and skip the cart — fewer clicks, more completed orders. Configure where it appears and how it behaves below; changes apply to your storefront as soon as you save."
-msgstr "Swift dodaje przycisk „Kup teraz”, dzięki któremu klienci mogą przejść prosto do zamówienia z pominięciem koszyka — mniej kliknięć, więcej sfinalizowanych zamówień. Poniżej skonfiguruj, gdzie się pojawia i jak działa; zmiany są stosowane w sklepie zaraz po zapisaniu."
+msgid ""
+"Swift adds a \"Buy now\" button so shoppers can go straight to checkout and "
+"skip the cart — fewer clicks, more completed orders. Configure where it "
+"appears and how it behaves below; changes apply to your storefront as soon "
+"as you save."
+msgstr ""
+"Swift dodaje przycisk „Kup teraz”, dzięki któremu klienci mogą przejść "
+"prosto do zamówienia z pominięciem koszyka — mniej kliknięć, więcej "
+"sfinalizowanych zamówień. Poniżej skonfiguruj, gdzie się pojawia i jak "
+"działa; zmiany są stosowane w sklepie zaraz po zapisaniu."
 
 #: src/Admin/Settings.php:150
 msgid "Basics"
@@ -81,8 +92,12 @@ msgid "Enable Buy Now"
 msgstr "Włącz Kup teraz"
 
 #: src/Admin/Settings.php:156
-msgid "The master switch. When off, Swift adds no button, scripts or styles to your storefront at all — a clean, zero-footprint disable."
-msgstr "Główny przełącznik. Po wyłączeniu Swift nie dodaje do sklepu żadnego przycisku, skryptów ani stylów — czyste wyłączenie bez śladu."
+msgid ""
+"The master switch. When off, Swift adds no button, scripts or styles to your "
+"storefront at all — a clean, zero-footprint disable."
+msgstr ""
+"Główny przełącznik. Po wyłączeniu Swift nie dodaje do sklepu żadnego "
+"przycisku, skryptów ani stylów — czyste wyłączenie bez śladu."
 
 #: src/Admin/Settings.php:167
 msgid "Show the Buy Now button on your store."
@@ -93,12 +108,20 @@ msgid "Button label"
 msgstr "Etykieta przycisku"
 
 #: src/Admin/Settings.php:174
-msgid "The wording on the button. Short, action-led labels convert best — try \"Buy now\", \"Get it now\" or \"Express checkout\"."
-msgstr "Treść na przycisku. Najlepiej konwertują krótkie, zachęcające do działania etykiety — wypróbuj „Kup teraz”, „Zamów teraz” lub „Ekspresowe zamówienie”."
+msgid ""
+"The wording on the button. Short, action-led labels convert best — try \"Buy "
+"now\", \"Get it now\" or \"Express checkout\"."
+msgstr ""
+"Treść na przycisku. Najlepiej konwertują krótkie, zachęcające do działania "
+"etykiety — wypróbuj „Kup teraz”, „Zamów teraz” lub „Ekspresowe zamówienie”."
 
 #: src/Admin/Settings.php:185
-msgid "Text shown on the Buy Now button. Leave empty to use the default (\"Buy now\")."
-msgstr "Tekst wyświetlany na przycisku Kup teraz. Pozostaw puste, aby użyć domyślnego („Kup teraz”)."
+msgid ""
+"Text shown on the Buy Now button. Leave empty to use the default (\"Buy "
+"now\")."
+msgstr ""
+"Tekst wyświetlany na przycisku Kup teraz. Pozostaw puste, aby użyć "
+"domyślnego („Kup teraz”)."
 
 #: src/Admin/Settings.php:192
 msgid "Live preview:"
@@ -121,29 +144,44 @@ msgid "Show the button on single product pages."
 msgstr "Pokaż przycisk na stronach pojedynczego produktu."
 
 #: src/Admin/Settings.php:203
-msgid "The product detail page. This is the highest-intent spot — the shopper is already looking at the item."
-msgstr "Strona ze szczegółami produktu. To miejsce o najwyższej intencji zakupowej — klient już ogląda dany produkt."
+msgid ""
+"The product detail page. This is the highest-intent spot — the shopper is "
+"already looking at the item."
+msgstr ""
+"Strona ze szczegółami produktu. To miejsce o najwyższej intencji zakupowej — "
+"klient już ogląda dany produkt."
 
 #: src/Admin/Settings.php:204
 msgid "Shop & archive loops"
 msgstr "Pętle sklepu i archiwów"
 
 #: src/Admin/Settings.php:204
-msgid "Show the button on shop and archive product loops (simple products only)."
-msgstr "Pokaż przycisk w pętlach produktów sklepu i archiwów (tylko produkty proste)."
+msgid ""
+"Show the button on shop and archive product loops (simple products only)."
+msgstr ""
+"Pokaż przycisk w pętlach produktów sklepu i archiwów (tylko produkty proste)."
 
 #: src/Admin/Settings.php:204
-msgid "Product grids on the shop and category pages. Lets shoppers buy without opening each product. Simple products only; variable products need a chosen variation."
-msgstr "Siatki produktów na stronach sklepu i kategorii. Pozwalają klientom kupować bez otwierania każdego produktu. Tylko produkty proste; produkty z wariantami wymagają wybrania wariantu."
+msgid ""
+"Product grids on the shop and category pages. Lets shoppers buy without "
+"opening each product. Simple products only; variable products need a chosen "
+"variation."
+msgstr ""
+"Siatki produktów na stronach sklepu i kategorii. Pozwalają klientom kupować "
+"bez otwierania każdego produktu. Tylko produkty proste; produkty z "
+"wariantami wymagają wybrania wariantu."
 
-#: src/Admin/Settings.php:208
-#: src/Admin/Settings.php:213
+#: src/Admin/Settings.php:208 src/Admin/Settings.php:213
 msgid "Position on single product"
 msgstr "Pozycja na stronie pojedynczego produktu"
 
 #: src/Admin/Settings.php:209
-msgid "Whether Swift's button sits above or below WooCommerce's own \"Add to cart\" button on the product page."
-msgstr "Czy przycisk Swift znajduje się nad czy pod własnym przyciskiem „Dodaj do koszyka” WooCommerce na stronie produktu."
+msgid ""
+"Whether Swift's button sits above or below WooCommerce's own \"Add to cart\" "
+"button on the product page."
+msgstr ""
+"Czy przycisk Swift znajduje się nad czy pod własnym przyciskiem „Dodaj do "
+"koszyka” WooCommerce na stronie produktu."
 
 #: src/Admin/Settings.php:222
 msgid "After the add-to-cart button"
@@ -169,14 +207,19 @@ msgstr "Zachowanie"
 msgid "What happens when a shopper clicks Buy now."
 msgstr "Co dzieje się, gdy klient kliknie Kup teraz."
 
-#: src/Admin/Settings.php:254
-#: src/Admin/Settings.php:259
+#: src/Admin/Settings.php:254 src/Admin/Settings.php:259
 msgid "Redirect to"
 msgstr "Przekieruj do"
 
 #: src/Admin/Settings.php:255
-msgid "Where the shopper lands after clicking. \"Checkout\" is the fast path that skips the cart entirely; \"Cart\" sends them to the cart page to review first."
-msgstr "Gdzie trafia klient po kliknięciu. „Zamówienie” to szybka ścieżka, która całkowicie pomija koszyk; „Koszyk” kieruje go najpierw na stronę koszyka w celu sprawdzenia."
+msgid ""
+"Where the shopper lands after clicking. \"Checkout\" is the fast path that "
+"skips the cart entirely; \"Cart\" sends them to the cart page to review "
+"first."
+msgstr ""
+"Gdzie trafia klient po kliknięciu. „Zamówienie” to szybka ścieżka, która "
+"całkowicie pomija koszyk; „Koszyk” kieruje go najpierw na stronę koszyka w "
+"celu sprawdzenia."
 
 #: src/Admin/Settings.php:268
 msgid "Checkout (skip the cart)"
@@ -191,24 +234,44 @@ msgid "Empty the cart first"
 msgstr "Najpierw opróżnij koszyk"
 
 #: src/Admin/Settings.php:285
-msgid "Clear the cart before adding, so the buyer checks out with only the chosen product."
-msgstr "Wyczyść koszyk przed dodaniem, aby kupujący finalizował zamówienie z samym wybranym produktem."
+msgid ""
+"Clear the cart before adding, so the buyer checks out with only the chosen "
+"product."
+msgstr ""
+"Wyczyść koszyk przed dodaniem, aby kupujący finalizował zamówienie z samym "
+"wybranym produktem."
 
 #: src/Admin/Settings.php:285
-msgid "Recommended for a true \"buy just this\" flow. If a shopper already has items in their cart, this removes them so the Buy now purchase stands alone. Turn off to add to the existing cart instead."
-msgstr "Zalecane dla prawdziwego scenariusza „kup tylko to”. Jeśli klient ma już produkty w koszyku, opcja je usuwa, aby zakup przez Kup teraz pozostał osobny. Wyłącz, aby zamiast tego dodać do istniejącego koszyka."
+msgid ""
+"Recommended for a true \"buy just this\" flow. If a shopper already has "
+"items in their cart, this removes them so the Buy now purchase stands alone. "
+"Turn off to add to the existing cart instead."
+msgstr ""
+"Zalecane dla prawdziwego scenariusza „kup tylko to”. Jeśli klient ma już "
+"produkty w koszyku, opcja je usuwa, aby zakup przez Kup teraz pozostał "
+"osobny. Wyłącz, aby zamiast tego dodać do istniejącego koszyka."
 
 #: src/Admin/Settings.php:286
 msgid "Respect quantity"
 msgstr "Uwzględnij ilość"
 
 #: src/Admin/Settings.php:286
-msgid "Carry the quantity chosen on the product page into the Buy Now purchase (single, simple products)."
-msgstr "Przenieś ilość wybraną na stronie produktu do zakupu przez Kup teraz (pojedyncze, proste produkty)."
+msgid ""
+"Carry the quantity chosen on the product page into the Buy Now purchase "
+"(single, simple products)."
+msgstr ""
+"Przenieś ilość wybraną na stronie produktu do zakupu przez Kup teraz "
+"(pojedyncze, proste produkty)."
 
 #: src/Admin/Settings.php:286
-msgid "When on, the quantity the shopper picks in the product's quantity box is used for the Buy now purchase. When off, exactly one unit is bought. Single, simple products only."
-msgstr "Po włączeniu do zakupu przez Kup teraz używana jest ilość, którą klient wybierze w polu ilości produktu. Po wyłączeniu kupowana jest dokładnie jedna sztuka. Tylko pojedyncze, proste produkty."
+msgid ""
+"When on, the quantity the shopper picks in the product's quantity box is "
+"used for the Buy now purchase. When off, exactly one unit is bought. Single, "
+"simple products only."
+msgstr ""
+"Po włączeniu do zakupu przez Kup teraz używana jest ilość, którą klient "
+"wybierze w polu ilości produktu. Po wyłączeniu kupowana jest dokładnie jedna "
+"sztuka. Tylko pojedyncze, proste produkty."
 
 #: src/Admin/Settings.php:293
 msgid "Appearance"
@@ -216,16 +279,24 @@ msgstr "Wygląd"
 
 #: src/Admin/Settings.php:294
 msgid "How the button looks. Use the live preview above to check your choices."
-msgstr "Jak wygląda przycisk. Skorzystaj z podglądu na żywo powyżej, aby sprawdzić swoje wybory."
+msgstr ""
+"Jak wygląda przycisk. Skorzystaj z podglądu na żywo powyżej, aby sprawdzić "
+"swoje wybory."
 
-#: src/Admin/Settings.php:299
-#: src/Admin/Settings.php:304
+#: src/Admin/Settings.php:299 src/Admin/Settings.php:304
 msgid "Button style"
 msgstr "Styl przycisku"
 
 #: src/Admin/Settings.php:300
-msgid "\"Theme default\" inherits your theme's button look (safest, blends in). \"Solid\" and \"Outline\" use the accent colour below so the button stands out from the standard add-to-cart button."
-msgstr "„Domyślny motywu” dziedziczy wygląd przycisku z Twojego motywu (najbezpieczniejszy, wtapia się). „Pełny” i „Obrys” używają koloru akcentu poniżej, dzięki czemu przycisk wyróżnia się na tle standardowego przycisku dodawania do koszyka."
+msgid ""
+"\"Theme default\" inherits your theme's button look (safest, blends in). "
+"\"Solid\" and \"Outline\" use the accent colour below so the button stands "
+"out from the standard add-to-cart button."
+msgstr ""
+"„Domyślny motywu” dziedziczy wygląd przycisku z Twojego motywu "
+"(najbezpieczniejszy, wtapia się). „Pełny” i „Obrys” używają koloru akcentu "
+"poniżej, dzięki czemu przycisk wyróżnia się na tle standardowego przycisku "
+"dodawania do koszyka."
 
 #: src/Admin/Settings.php:313
 msgid "Theme default"
@@ -244,21 +315,42 @@ msgid "Accent colour"
 msgstr "Kolor akcentu"
 
 #: src/Admin/Settings.php:343
-msgid "A hex colour (e.g. #2271b1) used by the Solid and Outline styles. Pick a high-contrast brand colour so the button is easy to see and tap. Ignored by the \"Theme default\" style."
-msgstr "Kolor w formacie hex (np. #2271b1) używany przez style Pełny i Obrys. Wybierz kontrastowy kolor marki, aby przycisk był dobrze widoczny i łatwy do kliknięcia. Ignorowany przez styl „Domyślny motywu”."
+msgid ""
+"A hex colour used by the Solid and Outline styles. Leave empty to use "
+"Swift's velocity violet (#5b3df5). Pick a high-contrast brand colour so the "
+"button is easy to see and tap. Ignored by the \"Theme default\" style."
+msgstr ""
 
 #: src/Admin/Settings.php:356
-msgid "Hex colour for the Solid / Outline styles (e.g. #2271b1). Leave empty to use the theme colour."
-msgstr "Kolor hex dla stylów Pełny / Obrys (np. #2271b1). Pozostaw puste, aby użyć koloru motywu."
+msgid ""
+"Hex colour for the Solid / Outline styles. Leave empty for Swift's velocity "
+"violet (#5b3df5)."
+msgstr ""
 
 #: src/Admin/Settings.php:386
 msgid "Help"
 msgstr "Pomoc"
 
-#: src/Service/SwiftService.php:53
+#: src/Service/SwiftService.php:50
 msgid "Sorry, this product could not be added to your cart."
 msgstr "Przepraszamy, nie udało się dodać tego produktu do koszyka."
 
 #: swift.php:47
 msgid "Swift – Quick Buy for WooCommerce requires WooCommerce to be active."
 msgstr "Swift – szybki zakup dla WooCommerce wymaga aktywnego WooCommerce."
+
+#~ msgid ""
+#~ "A hex colour (e.g. #2271b1) used by the Solid and Outline styles. Pick a "
+#~ "high-contrast brand colour so the button is easy to see and tap. Ignored "
+#~ "by the \"Theme default\" style."
+#~ msgstr ""
+#~ "Kolor w formacie hex (np. #2271b1) używany przez style Pełny i Obrys. "
+#~ "Wybierz kontrastowy kolor marki, aby przycisk był dobrze widoczny i łatwy "
+#~ "do kliknięcia. Ignorowany przez styl „Domyślny motywu”."
+
+#~ msgid ""
+#~ "Hex colour for the Solid / Outline styles (e.g. #2271b1). Leave empty to "
+#~ "use the theme colour."
+#~ msgstr ""
+#~ "Kolor hex dla stylów Pełny / Obrys (np. #2271b1). Pozostaw puste, aby "
+#~ "użyć koloru motywu."
