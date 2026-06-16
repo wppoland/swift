@@ -1,6 +1,6 @@
 === Swift – Quick Buy for WooCommerce ===
 Contributors: wppoland
-Tags: woocommerce, buy now, direct checkout, skip cart, one click
+Tags: woocommerce, buy now, direct checkout, skip cart, quick buy
 Requires at least: 6.5
 Tested up to: 7.0
 Requires PHP: 8.1
@@ -9,11 +9,11 @@ Requires Plugins: woocommerce
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Add a Buy Now button that takes shoppers straight to checkout, skipping the cart.
+Add a Buy Now / quick buy button that takes shoppers straight to checkout, skipping the cart.
 
 == Description ==
 
-Swift adds a "Buy Now" button to your WooCommerce products. One click adds the product to the cart and sends the shopper straight to checkout, skipping the cart page so a purchase takes one click instead of three.
+Swift adds a "Buy Now" quick buy button to your WooCommerce products. One click adds the product to the cart and sends the shopper straight to checkout, skipping the cart page so a purchase takes one click instead of three.
 
 The button can appear on single product pages, on shop and archive loops, or both. You choose the label, where it redirects (checkout or cart), and whether the cart is emptied first so the buyer checks out with only the product they clicked.
 
@@ -72,6 +72,14 @@ On single product pages and/or shop and archive product loops; you choose which 
 
 Yes, if you set the redirect target to "Checkout". The product is added to the cart and the shopper is taken straight to the checkout page. You can also choose to redirect to the cart instead.
 
+= Can the Buy Now button empty the cart first? =
+
+Yes. Swift can clear the cart before adding the selected product, so direct checkout contains only the item the shopper clicked.
+
+= Does it respect the selected quantity? =
+
+Yes for simple products on single product pages, when the "respect quantity" setting is enabled.
+
 = Does it create database tables? =
 
 No. Swift is stateless — it stores only its settings (one option) and creates no custom tables or product meta.
@@ -79,6 +87,10 @@ No. Swift is stateless — it stores only its settings (one option) and creates 
 = Does it work with variable products? =
 
 The free version is designed for simple products. On shop loops the button is shown for simple products only, since a variation must be chosen first. Full Buy Now support for variable products (with an inline variation picker) is planned for Swift Pro.
+
+= Can I place the button with a shortcode? =
+
+Yes. Use `[swift_buy_now]` for the current product or `[swift_buy_now id="123"]` for a specific simple product.
 
 == Screenshots ==
 
