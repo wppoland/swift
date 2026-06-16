@@ -340,7 +340,7 @@ final class Settings implements HasHooks
                             <tr>
                                 <th scope="row">
                                     <label for="swift_accent_color"><?php esc_html_e('Accent colour', 'swift'); ?></label>
-                                    <?php $this->help('accent-colour', __('A hex colour (e.g. #2271b1) used by the Solid and Outline styles. Pick a high-contrast brand colour so the button is easy to see and tap. Ignored by the "Theme default" style.', 'swift')); ?>
+                                    <?php $this->help('accent-colour', __('A hex colour used by the Solid and Outline styles. Leave empty to use Swift\'s velocity violet (#5b3df5). Pick a high-contrast brand colour so the button is easy to see and tap. Ignored by the "Theme default" style.', 'swift')); ?>
                                 </th>
                                 <td>
                                     <input
@@ -351,9 +351,9 @@ final class Settings implements HasHooks
                                         class="regular-text"
                                         inputmode="text"
                                         pattern="#?([A-Fa-f0-9]{3}|[A-Fa-f0-9]{6})"
-                                        placeholder="#2271b1"
+                                        placeholder="#5b3df5"
                                     />
-                                    <p class="description"><?php esc_html_e('Hex colour for the Solid / Outline styles (e.g. #2271b1). Leave empty to use the theme colour.', 'swift'); ?></p>
+                                    <p class="description"><?php esc_html_e('Hex colour for the Solid / Outline styles. Leave empty for Swift\'s velocity violet (#5b3df5).', 'swift'); ?></p>
                                 </td>
                             </tr>
                         </tbody>
