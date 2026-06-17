@@ -97,6 +97,12 @@ Yes. Use `[swift_buy_now]` for the current product or `[swift_buy_now id="123"]`
 1. The Buy Now button on a single product page.
 2. The Swift Quick Buy settings screen.
 
+== External Services ==
+
+Swift does not connect to, send data to, or load anything from any external service. There is no SDK, no API client, no remote font, CDN or analytics endpoint, and no phone-home or licensing check — its CSS and JavaScript are bundled with the plugin and enqueued from your own site.
+
+All of Swift's work happens on your server. It reads and writes a single settings option (`swift_settings`) and a schema-version marker (`swift_db_version`), and creates no custom database tables and no product meta. The Buy Now button adds the chosen product to the visitor's own WooCommerce cart and redirects them within your site to your checkout or cart page; nothing about the product, the cart or the shopper leaves your installation.
+
 == Changelog ==
 
 = 0.2.0 =
