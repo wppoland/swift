@@ -21,6 +21,15 @@ Swift is stateless: it stores no per-product data and creates no database tables
 
 Swift is developed in the open. Source code, bug reports and feature requests live at https://github.com/wppoland/swift.
 
+= Documentation and links =
+
+* **Documentation** - https://plogins.com/swift/docs/
+* **Plugin page** - https://plogins.com/swift/
+* **Source code** - https://github.com/wppoland/swift
+* **Bug reports and feature requests** - https://github.com/wppoland/swift/issues
+* **Discussions and questions** - https://github.com/wppoland/swift/discussions
+
+
 = What it does =
 
 * Adds a "Buy Now" button that adds-to-cart and redirects in one click.
