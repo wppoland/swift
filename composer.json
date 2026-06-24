@@ -3,15 +3,8 @@
     "description": "Add a Buy Now button that takes shoppers straight to checkout, skipping the cart.",
     "type": "wordpress-plugin",
     "license": "GPL-2.0-or-later",
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/wppoland/storefront-kit"
-        }
-    ],
     "require": {
-        "php": ">=8.1",
-        "wppoland/storefront-kit": "^1.5"
+        "php": ">=8.1"
     },
     "require-dev": {
         "wp-coding-standards/wpcs": "^3.0",
@@ -22,7 +15,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Swift\\": "src/"
+            "Swift\\": "src/",
+            "WPPoland\\StorefrontKit\\": "lib/storefront-kit/"
         }
     },
     "scripts": {
