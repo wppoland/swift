@@ -39,8 +39,8 @@ Swift is developed in the open. Source code, bug reports and feature requests li
 * Redirects to the **checkout** (skip the cart) or to the **cart**, whichever you prefer.
 * Optionally empties the cart first so checkout shows only the chosen product.
 * Optionally **respects the quantity** chosen on the product page (simple products).
-* Pick a button **style** — theme default, solid, or outline — with an optional accent colour.
-* Honours stock and purchasability — the button is hidden for out-of-stock or non-purchasable products, and is not shown for variable products in loops.
+* Pick a button **style**, theme default, solid, or outline, with an optional accent colour.
+* Honours stock and purchasability, the button is hidden for out-of-stock or non-purchasable products, and is not shown for variable products in loops.
 
 = Settings =
 
@@ -57,7 +57,7 @@ A simple WooCommerce settings page (WooCommerce → Swift Quick Buy) lets you:
 
 = Shortcode =
 
-Use `[swift_buy_now]` to render the Buy Now button anywhere — inside a page, post or block. It targets the current product by default; add an id to target a specific simple product:
+Use `[swift_buy_now]` to render the Buy Now button anywhere, inside a page, post or block. It targets the current product by default; add an id to target a specific simple product:
 
 `[swift_buy_now id="123"]`
 
@@ -91,7 +91,7 @@ Yes for simple products on single product pages, when the "respect quantity" set
 
 = Does it create database tables? =
 
-No. Swift is stateless — it stores only its settings (one option) and creates no custom tables or product meta.
+No. Swift is stateless, it stores only its settings (one option) and creates no custom tables or product meta.
 
 = Does it work with variable products? =
 
@@ -108,7 +108,7 @@ Yes. Use `[swift_buy_now]` for the current product or `[swift_buy_now id="123"]`
 
 == External Services ==
 
-Swift does not connect to, send data to, or load anything from any external service. There is no SDK, no API client, no remote font, CDN or analytics endpoint, and no phone-home or licensing check — its CSS and JavaScript are bundled with the plugin and enqueued from your own site.
+Swift does not connect to, send data to, or load anything from any external service. There is no SDK, no API client, no remote font, CDN or analytics endpoint, and no phone-home or licensing check, its CSS and JavaScript are bundled with the plugin and enqueued from your own site.
 
 All of Swift's work happens on your server. It reads and writes a single settings option (`swift_settings`) and a schema-version marker (`swift_db_version`), and creates no custom database tables and no product meta. The Buy Now button adds the chosen product to the visitor's own WooCommerce cart and redirects them within your site to your checkout or cart page; nothing about the product, the cart or the shopper leaves your installation.
 
@@ -118,13 +118,13 @@ All of Swift's work happens on your server. It reads and writes a single setting
 * New: `[swift_buy_now]` shortcode to place the Buy Now button anywhere (optionally targeting a product by id).
 * New: choose whether the button sits before or after the add-to-cart button on single product pages.
 * New: optionally respect the quantity chosen on the product page (simple products).
-* New: button style options — theme default, solid, or outline — with an optional accent colour.
+* New: button style options, theme default, solid, or outline, with an optional accent colour.
 * New: "Settings" link in the plugins list row.
 * New: uninstall cleanup removes the plugin's options (multisite-aware).
 * Improved: redesigned settings page with grouped cards, a live button preview, a Live/Off status indicator, and accessible "?" help tooltips on every option.
 * Improved: modern, themeable storefront button styles (CSS custom properties, dark-mode support, reduced-motion-safe transitions) with no layout shift.
-* Improved: accessibility — keyboard-operable help tooltips, visible focus styles, and ARIA roles throughout the admin.
-* Improved: robustness — the button never renders in a broken state for unpurchasable products, and the accent colour is scoped to Swift's own buttons.
+* Improved: accessibility, keyboard-operable help tooltips, visible focus styles, and ARIA roles throughout the admin.
+* Improved: robustness, the button never renders in a broken state for unpurchasable products, and the accent colour is scoped to Swift's own buttons.
 
 = 0.1.0 =
 * Initial release: a Buy Now button for WooCommerce that adds to cart and redirects straight to checkout (or cart), with a settings page for the label, placement and redirect target.
