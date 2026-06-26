@@ -140,7 +140,7 @@ final class Settings implements HasHooks
             </h1>
 
             <p class="swift-admin__intro">
-                <?php esc_html_e('Swift adds a "Buy now" button so shoppers can go straight to checkout and skip the cart — fewer clicks, more completed orders. Configure where it appears and how it behaves below; changes apply to your storefront as soon as you save.', 'swift'); ?>
+                <?php esc_html_e('Swift adds a "Buy now" button so shoppers can go straight to checkout and skip the cart, fewer clicks, more completed orders. Configure where it appears and how it behaves below; changes apply to your storefront as soon as you save.', 'swift'); ?>
             </p>
 
             <form method="post" action="options.php">
@@ -153,7 +153,7 @@ final class Settings implements HasHooks
                             <tr>
                                 <th scope="row">
                                     <?php esc_html_e('Enable Buy Now', 'swift'); ?>
-                                    <?php $this->help('master-switch', __('The master switch. When off, Swift adds no button, scripts or styles to your storefront at all — a clean, zero-footprint disable.', 'swift')); ?>
+                                    <?php $this->help('master-switch', __('The master switch. When off, Swift adds no button, scripts or styles to your storefront at all, a clean, zero-footprint disable.', 'swift')); ?>
                                 </th>
                                 <td>
                                     <label for="swift_enabled">
@@ -171,7 +171,7 @@ final class Settings implements HasHooks
                             <tr>
                                 <th scope="row">
                                     <label for="swift_button_text"><?php esc_html_e('Button label', 'swift'); ?></label>
-                                    <?php $this->help('button-label', __('The wording on the button. Short, action-led labels convert best — try "Buy now", "Get it now" or "Express checkout".', 'swift')); ?>
+                                    <?php $this->help('button-label', __('The wording on the button. Short, action-led labels convert best, try "Buy now", "Get it now" or "Express checkout".', 'swift')); ?>
                                 </th>
                                 <td>
                                     <input
@@ -200,7 +200,7 @@ final class Settings implements HasHooks
                     <table class="form-table" role="presentation">
                         <tbody>
                             <?php
-                            $this->checkboxRow('show_on_single', __('Single product page', 'swift'), __('Show the button on single product pages.', 'swift'), $settings, __('The product detail page. This is the highest-intent spot — the shopper is already looking at the item.', 'swift'));
+                            $this->checkboxRow('show_on_single', __('Single product page', 'swift'), __('Show the button on single product pages.', 'swift'), $settings, __('The product detail page. This is the highest-intent spot, the shopper is already looking at the item.', 'swift'));
                             $this->checkboxRow('show_on_loop', __('Shop & archive loops', 'swift'), __('Show the button on shop and archive product loops (simple products only).', 'swift'), $settings, __('Product grids on the shop and category pages. Lets shoppers buy without opening each product. Simple products only; variable products need a chosen variation.', 'swift'));
                             ?>
                             <tr>
@@ -236,7 +236,7 @@ final class Settings implements HasHooks
                                     <p class="description">
                                         <?php esc_html_e('Tip: you can also drop the button anywhere with the', 'swift'); ?>
                                         <code>[swift_buy_now]</code>
-                                        <?php esc_html_e('shortcode — add id="123" to target a specific product.', 'swift'); ?>
+                                        <?php esc_html_e('shortcode, add id="123" to target a specific product.', 'swift'); ?>
                                     </p>
                                 </td>
                             </tr>

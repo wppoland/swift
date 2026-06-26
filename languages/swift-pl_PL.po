@@ -74,12 +74,12 @@ msgstr "Wyłączony"
 #: src/Admin/Settings.php:143
 msgid ""
 "Swift adds a \"Buy now\" button so shoppers can go straight to checkout and "
-"skip the cart — fewer clicks, more completed orders. Configure where it "
+"skip the cart, fewer clicks, more completed orders. Configure where it "
 "appears and how it behaves below; changes apply to your storefront as soon "
 "as you save."
 msgstr ""
 "Swift dodaje przycisk „Kup teraz”, dzięki któremu klienci mogą przejść "
-"prosto do zamówienia z pominięciem koszyka — mniej kliknięć, więcej "
+"prosto do zamówienia z pominięciem koszyka, mniej kliknięć, więcej "
 "sfinalizowanych zamówień. Poniżej skonfiguruj, gdzie się pojawia i jak "
 "działa; zmiany są stosowane w sklepie zaraz po zapisaniu."
 
@@ -94,10 +94,10 @@ msgstr "Włącz Kup teraz"
 #: src/Admin/Settings.php:156
 msgid ""
 "The master switch. When off, Swift adds no button, scripts or styles to your "
-"storefront at all — a clean, zero-footprint disable."
+"storefront at all, a clean, zero-footprint disable."
 msgstr ""
 "Główny przełącznik. Po wyłączeniu Swift nie dodaje do sklepu żadnego "
-"przycisku, skryptów ani stylów — czyste wyłączenie bez śladu."
+"przycisku, skryptów ani stylów, czyste wyłączenie bez śladu."
 
 #: src/Admin/Settings.php:167
 msgid "Show the Buy Now button on your store."
@@ -109,11 +109,11 @@ msgstr "Etykieta przycisku"
 
 #: src/Admin/Settings.php:174
 msgid ""
-"The wording on the button. Short, action-led labels convert best — try \"Buy "
+"The wording on the button. Short, action-led labels convert best, try \"Buy "
 "now\", \"Get it now\" or \"Express checkout\"."
 msgstr ""
 "Treść na przycisku. Najlepiej konwertują krótkie, zachęcające do działania "
-"etykiety — wypróbuj „Kup teraz”, „Zamów teraz” lub „Ekspresowe zamówienie”."
+"etykiety, wypróbuj „Kup teraz”, „Zamów teraz” lub „Ekspresowe zamówienie”."
 
 #: src/Admin/Settings.php:185
 msgid ""
@@ -145,10 +145,10 @@ msgstr "Pokaż przycisk na stronach pojedynczego produktu."
 
 #: src/Admin/Settings.php:203
 msgid ""
-"The product detail page. This is the highest-intent spot — the shopper is "
+"The product detail page. This is the highest-intent spot, the shopper is "
 "already looking at the item."
 msgstr ""
-"Strona ze szczegółami produktu. To miejsce o najwyższej intencji zakupowej — "
+"Strona ze szczegółami produktu. To miejsce o najwyższej intencji zakupowej, "
 "klient już ogląda dany produkt."
 
 #: src/Admin/Settings.php:204
@@ -196,8 +196,8 @@ msgid "Tip: you can also drop the button anywhere with the"
 msgstr "Wskazówka: przycisk możesz też umieścić w dowolnym miejscu za pomocą"
 
 #: src/Admin/Settings.php:239
-msgid "shortcode — add id=\"123\" to target a specific product."
-msgstr "shortcode — dodaj id=\"123\", aby wskazać konkretny produkt."
+msgid "shortcode, add id=\"123\" to target a specific product."
+msgstr "shortcode, dodaj id=\"123\", aby wskazać konkretny produkt."
 
 #: src/Admin/Settings.php:248
 msgid "Behaviour"

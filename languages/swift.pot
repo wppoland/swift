@@ -67,7 +67,7 @@ msgid "Off"
 msgstr ""
 
 #: src/Admin/Settings.php:143
-msgid "Swift adds a \"Buy now\" button so shoppers can go straight to checkout and skip the cart — fewer clicks, more completed orders. Configure where it appears and how it behaves below; changes apply to your storefront as soon as you save."
+msgid "Swift adds a \"Buy now\" button so shoppers can go straight to checkout and skip the cart, fewer clicks, more completed orders. Configure where it appears and how it behaves below; changes apply to your storefront as soon as you save."
 msgstr ""
 
 #: src/Admin/Settings.php:150
@@ -79,7 +79,7 @@ msgid "Enable Buy Now"
 msgstr ""
 
 #: src/Admin/Settings.php:156
-msgid "The master switch. When off, Swift adds no button, scripts or styles to your storefront at all — a clean, zero-footprint disable."
+msgid "The master switch. When off, Swift adds no button, scripts or styles to your storefront at all, a clean, zero-footprint disable."
 msgstr ""
 
 #: src/Admin/Settings.php:167
@@ -91,7 +91,7 @@ msgid "Button label"
 msgstr ""
 
 #: src/Admin/Settings.php:174
-msgid "The wording on the button. Short, action-led labels convert best — try \"Buy now\", \"Get it now\" or \"Express checkout\"."
+msgid "The wording on the button. Short, action-led labels convert best, try \"Buy now\", \"Get it now\" or \"Express checkout\"."
 msgstr ""
 
 #: src/Admin/Settings.php:185
@@ -119,7 +119,7 @@ msgid "Show the button on single product pages."
 msgstr ""
 
 #: src/Admin/Settings.php:203
-msgid "The product detail page. This is the highest-intent spot — the shopper is already looking at the item."
+msgid "The product detail page. This is the highest-intent spot, the shopper is already looking at the item."
 msgstr ""
 
 #: src/Admin/Settings.php:204
@@ -156,7 +156,7 @@ msgid "Tip: you can also drop the button anywhere with the"
 msgstr ""
 
 #: src/Admin/Settings.php:239
-msgid "shortcode — add id=\"123\" to target a specific product."
+msgid "shortcode, add id=\"123\" to target a specific product."
 msgstr ""
 
 #: src/Admin/Settings.php:248
