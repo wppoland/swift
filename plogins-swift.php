@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name:       Swift – Quick Buy for WooCommerce
- * Plugin URI:        https://plogins.com/swift/
+ * Plugin Name:       Plogins Swift for WooCommerce
+ * Plugin URI:        https://plogins.com/plogins-swift/
  * Description:        Add a Buy Now button that takes shoppers straight to checkout, skipping the cart.
- * Version:           0.2.0
+ * Version:           0.2.1
  * Requires at least: 6.5
  * Requires PHP:      8.1
  * Requires Plugins:  woocommerce
@@ -11,7 +11,7 @@
  * Author URI:        https://wppoland.com
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       swift
+ * Text Domain:       plogins-swift
  * Domain Path:       /languages
  * WC requires at least: 8.0
  *
@@ -24,7 +24,7 @@ namespace Swift;
 
 defined('ABSPATH') || exit;
 
-const VERSION     = '0.2.0';
+const VERSION     = '0.2.1';
 const PLUGIN_FILE = __FILE__;
 
 define('SWIFT_DIR', plugin_dir_path(__FILE__));
@@ -44,7 +44,7 @@ add_action('plugins_loaded', static function (): void {
     if (! class_exists('WooCommerce')) {
         add_action('admin_notices', static function (): void {
             echo '<div class="notice notice-error"><p>';
-            echo esc_html__('Swift – Quick Buy for WooCommerce requires WooCommerce to be active.', 'swift');
+            echo esc_html__('Swift – Quick Buy for WooCommerce requires WooCommerce to be active.', 'plogins-swift');
             echo '</p></div>';
         });
         return;

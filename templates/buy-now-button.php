@@ -40,7 +40,7 @@ if ($swift_product_id <= 0 || $swift_action_url === '') {
 
 $swift_label = isset($button['label']) && (string) $button['label'] !== ''
     ? (string) $button['label']
-    : __('Buy now', 'swift');
+    : __('Buy now', 'plogins-swift');
 
 $swift_style = isset($settings['button_style']) ? (string) $settings['button_style'] : 'theme';
 if (! in_array($swift_style, ['theme', 'solid', 'outline'], true)) {

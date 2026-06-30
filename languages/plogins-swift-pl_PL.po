@@ -13,22 +13,22 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: WP-CLI 2.12.0\n"
-"X-Domain: swift\n"
+"X-Domain: plogins-swift\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 "
 "|| n%100>14) ? 1 : 2);\n"
 
 #. Plugin Name of the plugin
-#: swift.php
+#: plogins-swift.php
 msgid "Swift – Quick Buy for WooCommerce"
 msgstr "Swift – szybki zakup dla WooCommerce"
 
 #. Plugin URI of the plugin
-#: swift.php
+#: plogins-swift.php
 msgid "https://plogins.com/swift/"
 msgstr "https://plogins.com/swift/"
 
 #. Description of the plugin
-#: swift.php
+#: plogins-swift.php
 msgid ""
 "Add a Buy Now button that takes shoppers straight to checkout, skipping the "
 "cart."
@@ -37,12 +37,12 @@ msgstr ""
 "pominięciem koszyka."
 
 #. Author of the plugin
-#: swift.php
+#: plogins-swift.php
 msgid "WPPoland"
 msgstr "WPPoland"
 
 #. Author URI of the plugin
-#: swift.php
+#: plogins-swift.php
 msgid "https://plogins.com/"
 msgstr "https://plogins.com/"
 

@@ -12,7 +12,7 @@ defined('ABSPATH') || exit;
 /**
  * Wires up the Buy Now feature for this plugin.
  *
- * Supplies the text-domain ('swift'), option prefix ('swift_'), request key,
+ * Supplies the text-domain ('plogins-swift'), option prefix ('swift_'), request key,
  * nonce action and labels, plus the closures needed to report whether the
  * feature is enabled, resolve the merchant settings, and render the button
  * template. The button hooks, nonce, cart handling and redirect are handled by
@@ -46,8 +46,8 @@ final class SwiftService implements HasHooks
             nonceAction: 'swift_buy_now',
             buttonTemplate: 'buy-now-button',
             labels: [
-                'button'     => __('Buy now', 'swift'),
-                'add_failed' => __('Sorry, this product could not be added to your cart.', 'swift'),
+                'button'     => __('Buy now', 'plogins-swift'),
+                'add_failed' => __('Sorry, this product could not be added to your cart.', 'plogins-swift'),
             ],
             isEnabled: fn (): bool => $this->isEnabled(),
             settings: fn (): array => $this->settings(),

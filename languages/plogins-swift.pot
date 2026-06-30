@@ -12,30 +12,30 @@ msgstr ""
 "POT-Creation-Date: 2026-06-16T20:25:23+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
-"X-Domain: swift\n"
+"X-Domain: plogins-swift\n"
 
 #. Plugin Name of the plugin
-#: swift.php
+#: plogins-swift.php
 msgid "Swift – Quick Buy for WooCommerce"
 msgstr ""
 
 #. Plugin URI of the plugin
-#: swift.php
+#: plogins-swift.php
 msgid "https://plogins.com/swift/"
 msgstr ""
 
 #. Description of the plugin
-#: swift.php
+#: plogins-swift.php
 msgid "Add a Buy Now button that takes shoppers straight to checkout, skipping the cart."
 msgstr ""
 
 #. Author of the plugin
-#: swift.php
+#: plogins-swift.php
 msgid "WPPoland"
 msgstr ""
 
 #. Author URI of the plugin
-#: swift.php
+#: plogins-swift.php
 msgid "https://plogins.com/"
 msgstr ""
 

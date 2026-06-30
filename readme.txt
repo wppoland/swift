@@ -1,10 +1,10 @@
-=== Swift – Quick Buy for WooCommerce ===
+=== Plogins Swift for WooCommerce ===
 Contributors: motylanogha
 Tags: woocommerce, buy now, direct checkout, skip cart, quick buy
 Requires at least: 6.5
 Tested up to: 7.0
 Requires PHP: 8.1
-Stable tag: 0.2.0
+Stable tag: 0.2.1
 Requires Plugins: woocommerce
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -19,15 +19,14 @@ The button can appear on single product pages, on shop and archive loops, or bot
 
 Swift is stateless: it stores no per-product data and creates no database tables. It handles the button hooks, nonce verification, cart handling and redirect, and nothing else.
 
-Swift is developed in the open. Source code, bug reports and feature requests live at https://github.com/wppoland/swift.
+Swift is developed in the open. Source code, bug reports and feature requests live at https://github.com/wppoland/plogins-swift.
 
 = Documentation and links =
 
-* **Documentation** - https://plogins.com/swift/docs/
-* **Plugin page** - https://plogins.com/swift/
-* **Source code** - https://github.com/wppoland/swift
-* **Bug reports and feature requests** - https://github.com/wppoland/swift/issues
-* **Discussions and questions** - https://github.com/wppoland/swift/discussions
+* **Documentation** - https://plogins.com/plogins-swift/docs/
+* **Plugin page** - https://plogins.com/plogins-swift/
+* **Source code** - https://github.com/wppoland/plogins-swift
+* **Bug reports and feature requests** - https://github.com/wppoland/plogins-swift/issues
 
 
 = What it does =
@@ -63,7 +62,7 @@ Use `[swift_buy_now]` to render the Buy Now button anywhere, inside a page, post
 
 == Installation ==
 
-1. Upload the plugin to `/wp-content/plugins/swift`, or install via Plugins → Add New.
+1. Upload the plugin to `/wp-content/plugins/plogins-swift`, or install via Plugins → Add New.
 2. Activate it. WooCommerce must be active.
 3. Visit **WooCommerce → Swift Quick Buy** to configure the button label, placement and redirect target.
 
@@ -113,6 +112,9 @@ Swift does not connect to, send data to, or load anything from any external serv
 All of Swift's work happens on your server. It reads and writes a single settings option (`swift_settings`) and a schema-version marker (`swift_db_version`), and creates no custom database tables and no product meta. The Buy Now button adds the chosen product to the visitor's own WooCommerce cart and redirects them within your site to your checkout or cart page; nothing about the product, the cart or the shopper leaves your installation.
 
 == Changelog ==
+
+= 0.2.1 =
+* Renamed to Plogins Swift for WooCommerce for a more distinctive plugin name.
 
 = 0.2.0 =
 * New: `[swift_buy_now]` shortcode to place the Buy Now button anywhere (optionally targeting a product by id).
