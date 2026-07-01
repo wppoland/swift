@@ -1,4 +1,4 @@
-=== Plogins Swift for WooCommerce ===
+=== Plogins Swift - Buy Now Button for WooCommerce ===
 Contributors: motylanogha
 Tags: woocommerce, buy now, direct checkout, skip cart, quick buy
 Requires at least: 6.5
